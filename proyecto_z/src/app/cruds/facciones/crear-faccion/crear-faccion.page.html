@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Añadir Faccion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input [(ngModel)]="newFaccion.nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Lider de la facción</ion-label>
+      <ion-input [(ngModel)]="newFaccion.lider"></ion-input>
+    </ion-item>
+  </ion-card>
+
+  <div style="margin: 20px">
+    <ion-button (click)="save()" expand="block" shape="round">
+      Añadir facción
+    </ion-button>
+  </div>
+</ion-content>

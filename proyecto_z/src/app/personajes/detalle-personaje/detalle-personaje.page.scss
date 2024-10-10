@@ -1,0 +1,18 @@
+ion-col {
+    text-align: center;
+  }
+  
+  
+  ion-card-content ion-img {
+    height: 300px; /* Ajusta la altura de la imagen para que se ajuste mejor al card */
+    width: 150; /* Haz que la imagen ocupe todo el ancho del card */
+    //object-fit: cover; /* Asegura que la imagen se recorte para llenar el contenedor */
+    align-items: center;
+  }
+
+  ion-button {
+    position: absolute;
+    bottom: 8px;
+    right: 10px;
+    z-index: 10;
+  }

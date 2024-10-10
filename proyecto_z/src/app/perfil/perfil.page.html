@@ -1,0 +1,104 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <link rel="stylesheet" href="perfil.page.scss">
+
+    <body style="display:flex; align-items:center; justify-content:center;">
+        <div class="login-page">
+            <div class="form">
+                <h2 style="font-size: 20px; color: aqua;">Perfil de {{ usuario.nombre }}</h2>
+
+                <form *ngIf="isEditing" (ngSubmit)="onSubmit()" #usuarioForm="ngForm">
+                    <div>
+                        <p class="message" style="color: #ffffff; font-size: 15px">Nombre</p>
+                        <ion-input type="text" [(ngModel)]="usuario.nombre" name="nombre" required></ion-input>
+                    </div>
+                    <div>
+                        <p class="message" style="color: #ffffff; font-size: 15px">Apellido</p>
+                        <ion-input type="text" [(ngModel)]="usuario.apellido" name="apellido" required></ion-input>
+                    </div>
+                    <div>
+                        <ion-select class="btn2" style="color: white;"  name="raza" [(ngModel)]="usuario.raza"
+                            label="Raza" label-placement="floating" fill="outline">
+                            <ion-select-option value="Saiyan">Saiyan</ion-select-option>
+                            <ion-select-option value="Namekian">Namekian</ion-select-option>
+                            <ion-select-option value="Majin">Majin</ion-select-option>
+                            <ion-select-option value="Angel">Ángel</ion-select-option>
+                            <ion-select-option value="Humano">Humano</ion-select-option>
+                        </ion-select>
+                    </div>
+                    <ion-button fill="clear" class="btn" type="submit">
+                        Guardar
+                    </ion-button>
+                    <ion-button fill="clear" class="btn" (click)="isEditing = false">Cancelar</ion-button>
+                </form>
+
+                <div *ngIf="!isEditing">
+                    <div>
+                        <p class="message" style="color: #ffffff; font-size: 15px">Nombre</p>
+                        <a class="btn2">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            {{ usuario.nombre }}
+                        </a>
+                    </div>
+                    <div>
+                        <p class="message" style="color: #ffffff; font-size: 15px">Apellido</p>
+                        <a class="btn2">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            {{ usuario.apellido }}
+                        </a>
+                    </div>
+                    <div>
+                        <p class="message" style="color: #ffffff; font-size: 15px;">Raza</p>
+                        <a class="btn2">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            {{ usuario.raza }}
+                        </a>
+                    </div>
+                    <div>
+                        <p class="message" style="color: #ffffff; font-size: 15px;">Email</p>
+                        <a class="btn2">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            {{ usuario.email }}
+                        </a>
+                    </div>
+                    
+                    <div>
+                        <a class="btn2" (click)="isEditing = true">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Editar
+                        </a>
+                    </div>
+
+                    <div>
+                        <a class="btn2" (click)="logout()">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Cerrar sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <canvas id="rainfall"></canvas>
+    </body>
+</ion-content>

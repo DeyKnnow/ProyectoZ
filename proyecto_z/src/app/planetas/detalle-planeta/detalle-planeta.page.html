@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atrás"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle Planeta</ion-title>
+    <ion-buttons slot="end" *ngIf="userRole === 'admin'">
+      <ion-button (click)="toggleEdit()">
+        <ion-icon *ngIf="!isEditing" name="create"></ion-icon>
+        <ion-icon *ngIf="isEditing" name="checkmark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngIf="planeta">
+    <ion-card-header>
+      <ion-card-title>{{ planeta.nombre }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-img [src]="planeta.imagen"></ion-img>
+      <ion-list>
+        <ion-item>
+          <ion-label><strong>Nombre:</strong></ion-label>
+          <ion-input *ngIf="isEditing" [(ngModel)]="planeta.nombre" placeholder="Nombre"></ion-input>
+          <span *ngIf="!isEditing">{{ planeta.nombre }}</span>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Destruido:</strong></ion-label>
+          <ion-input *ngIf="isEditing" [(ngModel)]="planeta.destruido" placeholder="Ki"></ion-input>
+          <span *ngIf="!isEditing">{{ planeta.destruido }}</span>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Descripción:</strong></ion-label>
+          <ion-input *ngIf="isEditing" [(ngModel)]="planeta.descripcion" placeholder="Descripción" style="width: auto;"></ion-input>
+          <span *ngIf="!isEditing">{{ planeta.descripcion }}</span>
+        </ion-item>
+      </ion-list>
+      <ion-button *ngIf="isEditing" (click)="save()">Guardar</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

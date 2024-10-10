@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atrás"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle Personaje</ion-title>
+    <ion-buttons slot="end" *ngIf="userRole === 'admin'">
+      <ion-button (click)="toggleEdit()">
+        <ion-icon *ngIf="!isEditing" name="create"></ion-icon>
+        <ion-icon *ngIf="isEditing" name="checkmark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngIf="personaje">
+    <ion-card-header>
+      <ion-card-title>{{ personaje.nombre }}</ion-card-title>
+      <ion-card-subtitle>{{ personaje.raza }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-img [src]="personaje.imagen"></ion-img>
+      <ion-list>
+        <ion-item>
+          <ion-label><strong>Nombre:</strong></ion-label>
+          <ion-input *ngIf="isEditing" [(ngModel)]="personaje.nombre" placeholder="Nombre"></ion-input>
+          <span *ngIf="!isEditing">{{ personaje.nombre }}</span>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Ki:</strong></ion-label>
+          <ion-input *ngIf="isEditing" [(ngModel)]="personaje.ki" placeholder="Ki"></ion-input>
+          <span *ngIf="!isEditing">{{ personaje.ki }}</span>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Max Ki:</strong></ion-label>
+          <ion-input *ngIf="isEditing" [(ngModel)]="personaje.maxKi" placeholder="Max Ki"></ion-input>
+          <span *ngIf="!isEditing">{{ personaje.maxKi }}</span>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Raza:</strong></ion-label>
+          <ion-input *ngIf="isEditing" [(ngModel)]="personaje.raza" placeholder="Raza"></ion-input>
+          <span *ngIf="!isEditing">{{ personaje.raza }}</span>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Género:</strong></ion-label>
+          <ion-input *ngIf="isEditing" [(ngModel)]="personaje.sexo" placeholder="Sexo"></ion-input>
+          <span *ngIf="!isEditing">{{ personaje.sexo }}</span>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Descripción:</strong></ion-label>
+          <ion-input *ngIf="isEditing" [(ngModel)]="personaje.descripcion" placeholder="Descripción" style="width: auto;"></ion-input>
+          <span *ngIf="!isEditing">{{ personaje.descripcion }}</span>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Facción:</strong></ion-label>
+          <ion-input *ngIf="isEditing" [(ngModel)]="personaje.faccion" placeholder="Facción"></ion-input>
+          <span *ngIf="!isEditing">{{ personaje.faccion }}</span>
+        </ion-item>
+      </ion-list>
+      <ion-button *ngIf="isEditing" (click)="save()">Guardar</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

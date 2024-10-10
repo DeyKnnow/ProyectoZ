@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <link rel="stylesheet" href="login.page.scss">
+
+    <body style="display:flex; align-items:center; justify-content:center;">
+        <div class="login-page">
+            <div class="form">
+                <form class="login-form">
+                    <h2>Iniciar sesión</h2>
+                    <input type="email" id="email" name="email" [(ngModel)]="email" placeholder="Correo" required />
+                    <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="Contraseña" required />
+                    <ion-button fill="clear" class="btn" expand="full" (click)="login()">Iniciar Sesión</ion-button>
+                </form>
+                <div id="araña">
+                    <p class="message" style="color: #ffffff;">¿Olvidaste tu contraseña?</p>
+                    <a class="btn2" href="">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Cambiar la contraseña
+                    </a>
+                </div>
+                <div id="araña">
+                    <p class="message" style="color: #ffffff;">¿No estás registrado?</p>
+                    <a href="seguridad/register" class="btn2">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Ven, crea una cuenta
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <canvas id="rainfall"></canvas>
+    </body>
+</ion-content>

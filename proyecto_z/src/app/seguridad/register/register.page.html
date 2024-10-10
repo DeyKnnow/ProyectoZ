@@ -1,0 +1,80 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <body style="display:flex; align-items:center; justify-content:center;">
+        <div class="login-page">
+            <div class="form">
+                <form class="login-form" [formGroup]="usuarioForm" (ngSubmit)="onFormSubmit()">
+                    <h2>Registrarse</h2>
+                    <input type="text" [(ngModel)]="usuario.nombre" formControlName="nombre" placeholder="Nombre" />
+                    <input type="text" [(ngModel)]="usuario.apellido" formControlName="apellido"
+                        placeholder="Apellido" />
+                    <input type="email" [(ngModel)]="usuario.email" formControlName="email" placeholder="Correo" />
+                    <input type="password" [(ngModel)]="usuario.password" formControlName="password" placeholder="Clave" />
+                    <ion-select class="btn" style="color: white;" formControlName="raza" [(ngModel)]="usuario.raza"
+                        label="Raza" label-placement="floating" fill="Raza">
+                    <ion-select-option value="Saiyan">Saiyan</ion-select-option>
+                    <ion-select-option value="Namekian">Namekian</ion-select-option>
+                    <ion-select-option value="Majin">Majin</ion-select-option>
+                    <ion-select-option value="Angel">Ángel</ion-select-option>
+                    <ion-select-option value="Humano">Humano</ion-select-option>
+                    </ion-select>
+                    <a *ngIf="usuarioForm.get('clave')?.errors?.['contra'] && usuarioForm.get('clave')?.touched"
+                        class="btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                        {{ usuarioForm.get('clave')?.errors?.['contra'] }}
+                    </a>
+                    <a *ngIf="usuarioForm.get('email')?.errors?.['emailInvalid'] && usuarioForm.get('email')?.touched"
+                        class="btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                        {{ usuarioForm.get('email')?.errors?.['emailInvalid'] }}
+                    </a>
+                    <a *ngIf="usuarioForm.get('nombre')?.errors?.['no'] && usuarioForm.get('nombre')?.touched"
+                        class="btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                        {{ usuarioForm.get('nombre')?.errors?.['no'] }}
+                    </a>
+                    <a *ngIf="usuarioForm.get('apellido')?.errors?.['ap'] && usuarioForm.get('apellido')?.touched"
+                        class="btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                        {{ usuarioForm.get('apellido')?.errors?.['ap'] }}
+                    </a>
+                    <ion-button fill="clear" class="btn" type="submit" [disabled]="!usuarioForm.valid">
+
+                        Crear perfil
+                    </ion-button>
+
+                    <p class="message" style="color: #ffffff;">¿Ya tienes una cuenta?</p>
+
+                    <a href="seguridad/login" class="btn2">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Ven, inicia sesión
+                    </a>
+                </form>
+            </div>
+        </div>
+
+        <canvas id="rainfall"> </canvas>
+    </body>
+</ion-content>

@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Añadir Personaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input [(ngModel)]="newPersonaje.nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Ki</ion-label>
+      <ion-input [(ngModel)]="newPersonaje.ki"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Ki maximo</ion-label>
+      <ion-input [(ngModel)]="newPersonaje.maxKi"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Raza</ion-label>
+      <ion-input [(ngModel)]="newPersonaje.raza"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Sexo</ion-label>
+      <ion-input [(ngModel)]="newPersonaje.sexo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Faccion</ion-label>
+      <ion-input [(ngModel)]="newPersonaje.faccion"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Descripcion</ion-label>
+      <ion-input [(ngModel)]="newPersonaje.descripcion"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>URL Imagen</ion-label>
+      <ion-input [(ngModel)]="newPersonaje.imagen"></ion-input>
+    </ion-item>
+  </ion-card>
+
+  <div style="margin: 20px">
+  <ion-button (click)="save()" expand="block" shape="round">
+    Añadir personaje
+  </ion-button>
+</div>
+</ion-content>

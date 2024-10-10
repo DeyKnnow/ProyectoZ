@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lista de Usuarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" size-lg="4" *ngFor="let usuario of usuarios">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title style="color: white;">{{ usuario.nombre }} {{ usuario.apellido }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content style="color: white;">
+            <p>Email: {{ usuario.email }}</p>
+            <p>Raza: {{ usuario.raza }}</p>
+            <p>Rol: {{ usuario.role }}</p>
+            <ion-row>
+              <ion-col>
+                <ion-button (click)="selectUsuarioForEdit(usuario)" expand="full">Editar</ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button (click)="eliminarUsuario(usuario.email)" expand="full">Eliminar Usuario</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- Formulario de Edición -->
+        <div *ngIf="isEditing && editingUsuario?.email === usuario.email">
+          <h2>Editar Usuario</h2>
+          <form (ngSubmit)="onSubmit()" #usuariosForm="ngForm">
+            <div>
+              <p style="color: white;">Nombre</p>
+              <ion-input type="text" [(ngModel)]="editingUsuario.nombre" name="nombre" required></ion-input>
+            </div>
+            <div>
+              <p style="color: white;">Apellido</p>
+              <ion-input type="text" [(ngModel)]="editingUsuario.apellido" name="apellido" required></ion-input>
+            </div>
+            <div>
+              <ion-select class="btn2" name="raza" [(ngModel)]="editingUsuario.raza" label="Raza">
+                <ion-select-option value="Saiyan">Saiyan</ion-select-option>
+                <ion-select-option value="Namekian">Namekian</ion-select-option>
+                <ion-select-option value="Majin">Majin</ion-select-option>
+                <ion-select-option value="Angel">Ángel</ion-select-option>
+                <ion-select-option value="Humano">Humano</ion-select-option>
+              </ion-select>
+            </div>
+            <div>
+              <ion-select class="btn2" name="role" [(ngModel)]="editingUsuario.role" label="Rol">
+                <ion-select-option value="usuario">usuario</ion-select-option>
+                <ion-select-option value="admin">admin</ion-select-option>
+              </ion-select>
+            </div>
+            <ion-button type="submit">Guardar</ion-button>
+            <ion-button (click)="isEditing = false">Cancelar</ion-button>
+          </form>
+        </div>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

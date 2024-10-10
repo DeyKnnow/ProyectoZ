@@ -1,0 +1,75 @@
+ion-menu-button {
+    color: var(--ion-color-primary);
+  }
+  
+  #container {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+    color: #8c8c8c;
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+  
+  ion-col {
+    text-align: center;
+  }
+  
+  ion-card {
+    height: auto; /* Mantén la altura fija de la tarjeta */
+    position: relative;
+  }
+  
+  ion-card-content ion-img {
+    height: 200px; /* Ajusta la altura de la imagen para que se ajuste mejor al card */
+    width: 150; /* Haz que la imagen ocupe todo el ancho del card */
+    //object-fit: cover; /* Asegura que la imagen se recorte para llenar el contenedor */
+    align-items: center;
+  }
+
+  .filtrarPor {
+    
+    width: 30%;
+    margin-left: 20px;
+    // border-color: rgb(255, 153, 0);
+    // border-width: 2px; /* Ajusta el grosor del borde si es necesario */
+    // border-style: solid; /* Asegúrate de que el borde sea visible */
+    background-color: #1b1b1b;
+    border-radius: 15px;
+  }
+  
+  ion-card:hover {
+    box-shadow: 0 0 4px #FF8C00,
+        0 0 4px #FF8C00,
+        0 0 10px #FF8C00,
+        0 0 20px #FF8C00;
+  }
+  
+
+
+  ion-toolbar.footer-toolbar{
+    display: flex;
+    justify-content: center;
+  }
+  ion-toolbar.footer-toolbar {
+    display: grid;
+    place-items: center;
+  }
+  
+  

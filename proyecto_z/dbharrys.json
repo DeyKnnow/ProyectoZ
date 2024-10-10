@@ -1,0 +1,54 @@
+{
+  "productos": [
+    {
+      "id": "1",
+      "nombre": "Lavadora",
+      "descripcion": "Lavadora Insdustrial",
+      "precio": 450000,
+      "fecha": null,
+      "cantidad": 567
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "macarena@harrys.cl",
+      "nombre": "Macarena Constanza",
+      "apellido": "Harrys Harrys",
+      "email": "macarena@harrys.cl",
+      "contraseña": "123456",
+      "raza": "Saiyan"
+    },
+    {
+      "id": "araña",
+      "nombre": "jeremy",
+      "apellido": "navarro",
+      "clave": "master aragna",
+      "email": "jer.navarro@duocuc.cl",
+      "raza": "Majin"
+    },
+    {
+      "id": "araña",
+      "nombre": "gramostola",
+      "apellido": "rossea",
+      "clave": "master aragna",
+      "email": "jer.navarro@duocuc.cl",
+      "raza": "Majin"
+    },
+    {
+      "id": "oa",
+      "nombre": "ÑÑÑÑÑÑÑÑÑÑÑ",
+      "apellido": "ÑÑÑÑÑÑÑÑÑÑÑÑ",
+      "clave": "12345678",
+      "email": "ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ@ÑÑÑÑÑ.CL",
+      "raza": "Majin"
+    },
+    {
+      "id": "oa",
+      "nombre": "aasdwddwedwaewaddwsawdaq",
+      "apellido": "awadwad",
+      "clave": "awd231312312231",
+      "email": "dwadawwsadwda@dwa.cl",
+      "raza": "Saiyan"
+    }
+  ]
+}

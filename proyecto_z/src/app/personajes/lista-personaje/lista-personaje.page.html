@@ -1,0 +1,84 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Personajes</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar show-clear-button="focus" animated="true" placeholder="Buscar personaje"
+      (ionInput)="handleInput($event)">
+    </ion-searchbar>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-select placeholder="Filtrar por:" interface="popover" class="filtrarPor">
+      <ion-select-option value="opcion1">Todo</ion-select-option>
+      <ion-select-option value="opcion2">Raza</ion-select-option>
+      <ion-select-option value="opcion3">Facción</ion-select-option>
+    </ion-select>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let personaje of busquedaPersonajes; trackBy: trackByFn">
+        <ion-card [routerLink]="personaje.isEditing ? null : ['/personajes/detalle-personaje', personaje.id]">
+          <ion-card-header>
+            <!-- Si está en modo edición, muestra inputs, de lo contrario labels -->
+            <ion-card-title *ngIf="!personaje.isEditing">{{ personaje.nombre }}</ion-card-title>
+            <ion-input *ngIf="personaje.isEditing" [(ngModel)]="personaje.nombre"></ion-input>
+
+            <ion-card-subtitle *ngIf="!personaje.isEditing">
+              {{ personaje.sexo }} / {{ personaje.raza }}
+            </ion-card-subtitle>
+            <ion-input *ngIf="personaje.isEditing" [(ngModel)]="personaje.sexo" placeholder="Sexo"></ion-input>
+            <ion-input *ngIf="personaje.isEditing" [(ngModel)]="personaje.raza" placeholder="Raza"></ion-input>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-img [src]="personaje.imagen" [alt]="personaje.nombre"></ion-img>
+            <br>
+            <!-- Condicional para mostrar labels o inputs -->
+            <ion-label *ngIf="!personaje.isEditing">Ki: {{ personaje.ki }}</ion-label>
+            <ion-input *ngIf="personaje.isEditing" [(ngModel)]="personaje.ki" placeholder="Ki"></ion-input>
+
+            <br>
+            <ion-label *ngIf="!personaje.isEditing">Ki Máximo: {{ personaje.maxKi }}</ion-label>
+            <ion-input *ngIf="personaje.isEditing" [(ngModel)]="personaje.maxKi" placeholder="Ki Máximo"></ion-input>
+            <br>
+
+            <!-- Botones para Editar y Confirmar -->
+            <ion-buttons>
+              <!-- Mostrar el botón de editar solo si el usuario es admin -->
+              <ion-button *ngIf="userRole === 'admin'" (click)="personaje.isEditing ? confirmarEdicion(personaje) : edit(personaje)">
+                <ion-icon *ngIf="!personaje.isEditing" name="pencil-outline"></ion-icon>
+                <ion-icon *ngIf="personaje.isEditing" name="checkmark-outline"></ion-icon>
+              </ion-button>
+              <br>
+              <!-- Mostrar el botón de eliminar solo si el usuario es admin -->
+              <ion-button *ngIf="userRole === 'admin'" (click)="delete(personaje)">
+                <ion-icon name="trash-outline"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- <ion-footer>
+    <ion-toolbar class="footer-toolbar">
+      <ion-buttons slot="end" class="pagination-buttons">
+        <ion-button (click)="goToPage(firstLink)" [disabled]="!previousLink"><ion-icon
+            name="chevron-back-outline"></ion-icon><ion-icon name="chevron-back-outline"></ion-icon></ion-button>
+        <ion-button (click)="goToPage(previousLink)" [disabled]="!previousLink"><ion-icon
+            name="chevron-back-outline"></ion-icon></ion-button>
+        <ion-button>{{currentPage}}</ion-button>
+        <ion-button (click)="goToPage(nextLink)" [disabled]="!nextLink"><ion-icon
+            name="chevron-forward-outline"></ion-icon></ion-button>
+        <ion-button (click)="goToPage(lastLink)" [disabled]="!nextLink"><ion-icon
+            name="chevron-forward-outline"></ion-icon><ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer> -->
+</ion-content>

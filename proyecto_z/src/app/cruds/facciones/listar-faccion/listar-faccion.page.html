@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Facciones</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar show-clear-button="focus" animated="true" placeholder="Buscar Facción"
+      (ionInput)="handleInput($event)">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let faccion of busquedaFaccion; trackBy: trackByFn">
+        <ion-card>
+          <ion-card-header>
+            <!-- Si está en modo edición, muestra inputs, de lo contrario labels -->
+            <ion-card-title style="font-size: 15px;" *ngIf="!faccion.isEditing">{{ faccion.nombre }}</ion-card-title>
+            <ion-input *ngIf="faccion.isEditing" [(ngModel)]="faccion.nombre"></ion-input>
+            <ion-card-subtitle *ngIf="!faccion.isEditing">
+              {{ faccion.lider }}
+            </ion-card-subtitle>
+            <ion-input *ngIf="faccion.isEditing" [(ngModel)]="faccion.lider"></ion-input>
+          <ion-card-content>
+            <br>
+            <!-- Botones para Editar y Confirmar -->
+            <ion-buttons>
+              <!-- Mostrar el botón de editar solo si el usuario es admin -->
+              <ion-button *ngIf="userRole === 'admin'" (click)="faccion.isEditing ? confirmarEdicion(faccion) : edit(faccion)">
+                <ion-icon *ngIf="!faccion.isEditing" name="pencil-outline"></ion-icon>
+                <ion-icon *ngIf="faccion.isEditing" name="checkmark-outline"></ion-icon>
+              </ion-button>
+              <!-- Mostrar el botón de eliminar solo si el usuario es admin -->
+              <ion-button *ngIf="userRole === 'admin'" (click)="deleteFaccion(faccion)">
+                <ion-icon name="trash-outline"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-card-content>
+        

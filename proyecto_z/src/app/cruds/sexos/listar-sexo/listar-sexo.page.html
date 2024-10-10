@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Sexos</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar show-clear-button="focus" animated="true" placeholder="Buscar Sexo"
+      (ionInput)="handleInput($event)">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let sexo of busquedaSexo; trackBy: trackByFn">
+        <ion-card>
+          <ion-card-header>
+            <!-- Si está en modo edición, muestra inputs, de lo contrario labels -->
+            <ion-card-title style="font-size: 15px;" *ngIf="!sexo.isEditing">{{ sexo.nombre }}</ion-card-title>
+            <ion-input *ngIf="sexo.isEditing" [(ngModel)]="sexo.nombre"></ion-input>
+          <ion-card-content>
+            <br>
+            <!-- Botones para Editar y Confirmar -->
+            <ion-buttons>
+              <!-- Mostrar el botón de editar solo si el usuario es admin -->
+              <ion-button *ngIf="userRole === 'admin'" (click)="sexo.isEditing ? confirmarEdicion(sexo) : edit(sexo)">
+                <ion-icon *ngIf="!sexo.isEditing" name="pencil-outline"></ion-icon>
+                <ion-icon *ngIf="sexo.isEditing" name="checkmark-outline"></ion-icon>
+              </ion-button>
+              <!-- Mostrar el botón de eliminar solo si el usuario es admin -->
+              <ion-button *ngIf="userRole === 'admin'" (click)="deleteSexo(sexo)">
+                <ion-icon name="trash-outline"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-card-content>
+        
